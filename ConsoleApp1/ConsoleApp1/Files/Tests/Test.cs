@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,22 +45,21 @@ namespace MyRandom
             }
             finally
             {
-                dv.Url = "test.crm4you.pro:5775";
+                dv.Url = "http://test.crm4you.pro:5775";
             }
         }
 
         public static void LogOut(IWebDriver dv)
         {
-            dv.Url = "test.crm4you.pro:5775/en/Account/LogOff";
+            dv.Url = "http://test.crm4you.pro:5775/en/Account/LogOff";
         }
 
         static void Main(string[] args)
         {
-            IWebDriver dv = new ChromeDriver
-            {
-                Url = "test.crm4you.pro:5775"
-            };
+            IWebDriver dv = new FirefoxDriver();
 
+            //dv.AddArgument("no-sandbox");
+            dv.Url = "http://test.crm4you.pro:5775";
             dv.Manage().Window.Maximize();
 
             /*Wait(20);

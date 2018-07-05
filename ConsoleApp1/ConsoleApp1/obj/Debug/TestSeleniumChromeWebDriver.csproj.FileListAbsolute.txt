@@ -11,3 +11,10 @@ C:\Users\Andrei-PC\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pd
 C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
 C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\bin\Debug\WebDriver.dll
+C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\bin\Debug\WebDriver.Support.dll
+C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\bin\Debug\WebDriver.xml
+C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\bin\Debug\WebDriver.Support.xml
+C:\Work\SeleniumTestCRM\ConsoleApp1\ConsoleApp1\obj\Debug\TestSeleniumChromeWebDriver.csprojResolveAssemblyReference.cache
