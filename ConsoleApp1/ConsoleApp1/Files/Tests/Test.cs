@@ -20,7 +20,10 @@ namespace MyRandom
             dv.FindElement(By.Id("UserName")).SendKeys("it@torrentfx.com");
             dv.FindElement(By.Id("Password")).SendKeys(text: "Test123!" + Keys.Enter);
         }
-
+        // Actions:
+        // - Forget PWD.
+        // - enter PWD.
+        // - Check fail/success info box.
         public static void TestEmail (IWebDriver dv)
         {
             String email = "nicutestadmin@yopmail.com";
