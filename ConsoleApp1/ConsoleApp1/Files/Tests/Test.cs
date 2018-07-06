@@ -53,47 +53,58 @@ namespace MyRandom
                 dv.Url = "http://test.crm4you.pro:5775";
             }
         }
-        public static void CreateUserBO (IWebDriver dv)
+        //Creates 220 vakid users in system
+        public static void CreateUserBO (IWebDriver dv, string UrlTo)
         {            
             LogIn(dv, "it@torrentfx.com", "Test123!");
             Thread.Sleep(10000);
-            dv.Navigate().GoToUrl("http://test.crm4you.pro:5775/en/CrmMain/CreateUser");
+            dv.Navigate().GoToUrl(UrlTo + "/en/CrmMain/CreateUser");
             int i = 2;
-
-            while (i < 220)
+            try
             {
-                dv.Navigate().GoToUrl("http://test.crm4you.pro:5775/en/CrmMain/CreateUser");
-                Thread.Sleep(10000);
-                dv.FindElement(By.Id("TitleKey")).Click();
-                if (i % 5 != 0)
-                    dv.FindElement(By.XPath("//*[@id='TitleKey']/option[" + (i % 5) + "]")).Click();
-                else
-                    dv.FindElement(By.XPath("//*[@id='TitleKey']/option[" + ((i + 1) % 5) + "]")).Click();
-                dv.FindElement(By.Id("FirstName")).SendKeys(MyRandom.RandomString(10));
-                dv.FindElement(By.Id("Email")).SendKeys(MyRandom.RandomString(10) + "@yopmail.com");
-                dv.FindElement(By.Id("LastName")).SendKeys(MyRandom.RandomString(10));
-                dv.FindElement(By.Id("Address")).SendKeys(MyRandom.RandomString(10));
-                dv.FindElement(By.Id("City")).SendKeys(MyRandom.RandomString(10));
-                dv.FindElement(By.Id("ZipCode")).SendKeys(MyRandom.RandomString(10));
-                if (i % 185 != 0)
-                    dv.FindElement(By.XPath("//*[@id='CountryKey']/option[" + (i % 185) + "]")).Click();
-                else
-                    dv.FindElement(By.XPath("//*[@id='CountryKey']/option[" + ((i + 1) % 185) + "]")).Click();
-                dv.FindElement(By.XPath("//*[@id='NationalityKey']/option[" + i + "]")).Click();
-                dv.FindElement(By.Id("PhoneExtension")).SendKeys("373");
-                dv.FindElement(By.Id("Phone")).SendKeys(MyRandom.RandomInt(8));
-                if (i % 3 != 0)
-                    dv.FindElement(By.XPath("//*[@id='Language']/option[" + (i % 3) + "]")).Click();
-                else
-                    dv.FindElement(By.XPath("//*[@id='Language']/option[" + ((i + 1) % 3) + "]")).Click();
-                dv.FindElement(By.Id("Comment")).SendKeys("Created by AutoTest");
-                dv.FindElement(By.Id("formContinueButton")).Click();
-                //second page
-                dv.FindElement(By.XPath("//*[@id='EmploymentStatus']/option[" + 1 + "]")).Click();
-                dv.FindElement(By.XPath("//*[@id='EstimatedAnnualIncome']/option[" + 1 + "]")).Click();
-                dv.FindElement(By.XPath("//*[@id='EstimatedNetWorth']/option[" + 1 + "]")).Click();
-                dv.FindElement(By.Id("createUserSubmit")).Click();
-                Thread.Sleep(10000);
+                while (i < 220)
+                {
+                    dv.Navigate().GoToUrl("http://test.crm4you.pro:5775/en/CrmMain/CreateUser");
+                    Thread.Sleep(10000);
+                    dv.FindElement(By.Id("TitleKey")).Click();
+                    if (i % 5 != 0)
+                        dv.FindElement(By.XPath("//*[@id='TitleKey']/option[" + (i % 5) + "]")).Click();
+                    else
+                        dv.FindElement(By.XPath("//*[@id='TitleKey']/option[" + ((i + 1) % 5) + "]")).Click();
+                    dv.FindElement(By.Id("FirstName")).SendKeys(MyRandom.RandomString(10));
+                    dv.FindElement(By.Id("Email")).SendKeys(MyRandom.RandomString(10) + "@yopmail.com");
+                    dv.FindElement(By.Id("LastName")).SendKeys(MyRandom.RandomString(10));
+                    dv.FindElement(By.Id("Address")).SendKeys(MyRandom.RandomString(10));
+                    dv.FindElement(By.Id("City")).SendKeys(MyRandom.RandomString(10));
+                    dv.FindElement(By.Id("ZipCode")).SendKeys(MyRandom.RandomString(10));
+                    if (i % 185 != 0)
+                        dv.FindElement(By.XPath("//*[@id='CountryKey']/option[" + (i % 185) + "]")).Click();
+                    else
+                        dv.FindElement(By.XPath("//*[@id='CountryKey']/option[" + ((i + 1) % 185) + "]")).Click();
+                    dv.FindElement(By.XPath("//*[@id='NationalityKey']/option[" + i + "]")).Click();
+                    dv.FindElement(By.Id("PhoneExtension")).SendKeys("373");
+                    dv.FindElement(By.Id("Phone")).SendKeys(MyRandom.RandomInt(8));
+                    if (i % 3 != 0)
+                        dv.FindElement(By.XPath("//*[@id='Language']/option[" + (i % 3) + "]")).Click();
+                    else
+                        dv.FindElement(By.XPath("//*[@id='Language']/option[" + ((i + 1) % 3) + "]")).Click();
+                    dv.FindElement(By.Id("Comment")).SendKeys("Created by AutoTest");
+                    dv.FindElement(By.Id("formContinueButton")).Click();
+                    //second page
+                    dv.FindElement(By.XPath("//*[@id='EmploymentStatus']/option[" + 1 + "]")).Click();
+                    dv.FindElement(By.XPath("//*[@id='EstimatedAnnualIncome']/option[" + 1 + "]")).Click();
+                    dv.FindElement(By.XPath("//*[@id='EstimatedNetWorth']/option[" + 1 + "]")).Click();
+                    dv.FindElement(By.Id("createUserSubmit")).Click();
+                    Thread.Sleep(10000);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("BO Create User Fail");
+            }
+            finally
+            {
+                dv.Navigate().GoToUrl("http://test.crm4you.pro:5775");
             }
         }
         public static void LogOut(IWebDriver dv)
@@ -105,6 +116,7 @@ namespace MyRandom
         {
             TimeSpan time = TimeSpan.FromMinutes(1);
             IWebDriver dv = new FirefoxDriver();
+            string UrlTo = "http://test.crm4you.pro:5775";
             new WebDriverWait(dv, time).Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
             //dv.AddArgument("no-sandbox");
             dv.Url = "http://test.crm4you.pro:5775";
